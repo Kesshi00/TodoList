@@ -34,6 +34,6 @@ public class HelloServlet extends HttpServlet {
         logger.info("Got request with parameters " + req.getParameterMap());
         String name = req.getParameter(NAME_PARAM);
         String lang = req.getParameter(LANG_PARAM);
-        resp.getWriter().write(service.prepareGreeting(name,lang));
+        resp.getWriter().write(service.prepareGreeting(name, lang));
     }
 }
