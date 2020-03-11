@@ -15,7 +15,7 @@ public class HelloServiceTest {
     public void test_prepareGreeting_nullName_returnsGreetingWithFallbackName() throws Exception {
         var mockRepository = alwaysReturningHelloRepository();
         var SUT = new HelloService(mockRepository);
-        var result = SUT.prepareGreeting(null,"-1");
+        var result = SUT.prepareGreeting(null,-1);
         assertEquals(WELCOME + " " + HelloService.FALLBACK_NAME + "!", result);
     }
     @Test
@@ -23,7 +23,7 @@ public class HelloServiceTest {
         var mockRepository = alwaysReturningHelloRepository();
         var SUT = new HelloService(mockRepository);
         var name = "test";
-        var result = SUT.prepareGreeting(name, "-1");
+        var result = SUT.prepareGreeting(name, -1);
         assertEquals(WELCOME + " " + name + "!", result);
     }
     @Test
@@ -33,13 +33,13 @@ public class HelloServiceTest {
         var result = SUT.prepareGreeting(null, null);
         assertEquals(FALLBACK_ID_WELCOME + " " + HelloService.FALLBACK_NAME + "!", result);
     }
-    @Test
-    public void test_prepareGreeting_textLang_returnGreetingWithFallbackIdLang() throws Exception {
-        var mockRepository = fallbackLangIdRepository();
-        var SUT = new HelloService(mockRepository);
-        var result = SUT.prepareGreeting(null, "abc");
-        assertEquals(FALLBACK_ID_WELCOME + " " + HelloService.FALLBACK_NAME + "!", result);
-    }
+//    @Test
+//    public void test_prepareGreeting_textLang_returnGreetingWithFallbackIdLang() throws Exception {
+//        var mockRepository = fallbackLangIdRepository();
+//        var SUT = new HelloService(mockRepository);
+//        var result = SUT.prepareGreeting(null, "abc");
+//        assertEquals(FALLBACK_ID_WELCOME + " " + HelloService.FALLBACK_NAME + "!", result);
+//    }
     @Test
     public void test_prepareGreeting_nonExistingLang_returnsGreetingWithFallbackLang() throws Exception{
         var mockRepository = new LangRepository(){
@@ -49,7 +49,7 @@ public class HelloServiceTest {
             }
         };
         var SUT = new HelloService(mockRepository);
-        var result = SUT.prepareGreeting(null, "-1");
+        var result = SUT.prepareGreeting(null, -1);
         assertEquals(HelloService.FALLBACK_LANG.getWelcomeMsg() + " " + HelloService.FALLBACK_NAME + "!", result);
     }
 

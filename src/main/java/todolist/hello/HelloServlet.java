@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Optional;
+
+import static todolist.hello.HelloService.FALLBACK_LANG;
 
 @WebServlet(name = "Hello", urlPatterns = {"/api"})
 public class HelloServlet extends HttpServlet {
@@ -32,8 +35,15 @@ public class HelloServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         logger.info("Got request with parameters " + req.getParameterMap());
-        String name = req.getParameter(NAME_PARAM);
-        String lang = req.getParameter(LANG_PARAM);
-        resp.getWriter().write(service.prepareGreeting(name, lang));
+        var name = req.getParameter(NAME_PARAM);
+        var lang = req.getParameter(LANG_PARAM);
+        Integer langId = null;
+        try{
+            langId = Integer.valueOf(lang);
+        } catch (NumberFormatException e){
+            logger.warn("Non-numeric language id used: " + lang);
+            langId = FALLBACK_LANG.getId();
+        }
+        resp.getWriter().write(service.prepareGreeting(name, langId));
     }
 }
