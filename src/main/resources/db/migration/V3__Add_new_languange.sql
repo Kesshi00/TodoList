@@ -1,1 +1,1 @@
-insert into languages (welcomeMsg, code) values ('Guten morgen', 'de');
+insert into languages (welcomeMsg, code) values ('Hallo', 'de');

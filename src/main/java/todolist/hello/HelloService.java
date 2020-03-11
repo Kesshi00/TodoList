@@ -1,13 +1,15 @@
-package todolist;
+package todolist.hello;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import todolist.lang.Lang;
+import todolist.lang.LangRepository;
 
 import java.util.Optional;
 
 public class HelloService {
-    static final String FALLBACK_NAME = "world";
-    static final Lang FALLBACK_LANG = new Lang(1,"Hello", "en");
+    public static final String FALLBACK_NAME = "world";
+    public static final Lang FALLBACK_LANG = new Lang(1,"Hello", "en");
     private final Logger logger = LoggerFactory.getLogger(HelloService.class);
 
     private LangRepository repository;
@@ -20,7 +22,7 @@ public class HelloService {
         this.repository = repository;
     }
 
-    String prepareGreeting(String name, String lang){
+    public String prepareGreeting(String name, String lang){
         Integer langId;
         try{
             langId = Optional.ofNullable(lang).map(Integer::valueOf).orElse(FALLBACK_LANG.getId());
