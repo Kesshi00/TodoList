@@ -9,6 +9,8 @@ Simple todolist with three welcomes messages. Application is not at final stadiu
 - Maven 
 - Flyway
 - H2 Database
+- Jetty
+- JUnit
 
 ### Version
 1.0 Alpha Version
@@ -17,7 +19,7 @@ Simple todolist with three welcomes messages. Application is not at final stadiu
 I'm gonna change some style of this application. I will definitely add "remove" button to this todos and maybe some new functionality.
 
 ### Contact
-- Mail
+- Mail -
 kesshiaid00@gmail.com
 
 
