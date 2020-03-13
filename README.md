@@ -19,7 +19,7 @@ Simple todolist with three welcomes messages. Application is not at final stadiu
 I'm gonna change some style of this application. I will definitely add "remove" button to this todos and maybe some new functionality.
 
 ### Contact
-- Mail -
+- Email -
 kesshiaid00@gmail.com
 
 
