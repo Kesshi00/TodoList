@@ -14,21 +14,22 @@ public class HibernateUtil {
         }
     }
 
-   public static SessionFactory getSessionFactory(){
+    public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
 
-    private static SessionFactory buildSessionFactory(){
+    private static SessionFactory buildSessionFactory() {
         final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .configure()
                 .build();
-    try{
-        return new MetadataSources(registry).buildMetadata().buildSessionFactory();
-    } catch (Exception e){
-        StandardServiceRegistryBuilder.destroy(registry);
-        throw e;
+        try {
+            return new MetadataSources(registry).buildMetadata().buildSessionFactory();
+        } catch (Exception e) {
+            StandardServiceRegistryBuilder.destroy(registry);
+            throw e;
+        }
     }
-}
-private HibernateUtil(){
+
+    private HibernateUtil() {
     }
 }
